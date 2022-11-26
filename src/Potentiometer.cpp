@@ -5,12 +5,12 @@
 /**
  * Setup the potentiometer
  */
-Potentiometer::Potentiometer(uint8_t iPin, int iRest = 512, int iMargin = 50, bool iReversed = false)
+Potentiometer::Potentiometer(uint8_t iPin, bool iReversed = false, int iRest = 512, int iMargin = 50)
 {
     pin = iPin;
+    reversed = iReversed;
     rest = iRest;
     margin = iMargin;
-    reversed = iReversed;
     pinMode(pin, INPUT);
 }
 

@@ -3,7 +3,7 @@
 class Potentiometer
 {
     public:
-        Potentiometer(uint8_t iPin, int iRest = 512, int iMargin = 50, bool iReversed = false);
+        Potentiometer(uint8_t iPin, bool iReversed = false, int iRest = 512, int iMargin = 50);
         int getRawValue();
         int getValue();
         int lastValue;
