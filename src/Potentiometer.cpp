@@ -37,7 +37,7 @@ int Potentiometer::getValue()
     int finalValue = (rawValue - rest) * 2;
     if (finalValue >= 1023 - margin) finalValue = 1023;
     if (finalValue <= -1023 + margin) finalValue = -1023;
-    if (finalValue <= 0 + margin && finalValue >= 0 - margin) finalValue = -1023;
+    if (finalValue <= 0 + margin && finalValue >= 0 - margin) finalValue = 0;
     lastValue = finalValue;
     return finalValue;
 }
