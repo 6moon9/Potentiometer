@@ -32,9 +32,9 @@ int Potentiometer::getRawValue()
 int Potentiometer::getValue()
 {
     int rawValue = getRawValue();
-    if (reversed)
-        rawValue -= rawValue * 2;
     int finalValue = (rawValue - rest) * 2;
+    if (reversed)
+        finalValue *= -1;
     if (finalValue >= 1023 - margin) finalValue = 1023;
     if (finalValue <= -1023 + margin) finalValue = -1023;
     if (finalValue <= 0 + margin && finalValue >= 0 - margin) finalValue = 0;
