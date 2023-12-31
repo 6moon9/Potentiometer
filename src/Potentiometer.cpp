@@ -5,8 +5,10 @@
 /**
  * Setup the potentiometer
  */
-Potentiometer::Potentiometer(uint8_t iPin, bool iReversed = false, int iRest = 512, int iMargin = 50)
+Potentiometer::Potentiometer(uint8_t iPin, bool iReversed = false, int iRest = 512, int iMargin = 50, int iToMin = -1023, int iToMax = 1023)
 {
+	toMin = iToMin;
+	toMax = iToMax;
     pin = iPin;
     reversed = iReversed;
     rest = iRest;
@@ -38,6 +40,7 @@ int Potentiometer::getValue()
     if (finalValue >= 1023 - margin) finalValue = 1023;
     if (finalValue <= -1023 + margin) finalValue = -1023;
     if (finalValue <= 0 + margin && finalValue >= 0 - margin) finalValue = 0;
+    finalValue = map(finalValue, -1023, 1023, toMin, toMax);
     lastValue = finalValue;
     return finalValue;
 }
